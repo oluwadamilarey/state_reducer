@@ -1,23 +1,14 @@
 import React from "react";
-import "./App.css";
+import { useSelector } from "react-redux";
 
 import Input from "./components/input";
 import TodoItem from "./components/TodoItem";
-
-const todoList = [
-  {
-    item: "todo",
-    done: false,
-    id: 7849494947,
-  },
-  {
-    item: "todo2",
-    done: false,
-    id: 7849494949,
-  },
-];
+import { selectTodoList } from "./features/todoSlice";
+import "./App.css";
 
 function App() {
+  const todoList = useSelector(selectTodoList);
+
   return (
     <div className="app">
       <div className="app__container">
@@ -28,8 +19,8 @@ function App() {
             </div>
           ))}
         </div>
+        <Input />
       </div>
-      <Input />
     </div>
   );
 }

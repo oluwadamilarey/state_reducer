@@ -1,16 +1,21 @@
 import { Checkbox } from "@material-ui/core";
 import React from "react";
+import { useDispatch } from "react-redux";
+
 import "./TodoItem.css";
+import { setCheck } from "../features/todoSlice";
 
 const TodoItem = ({ name, done, id }) => {
+  const dispatch = useDispatch();
   const handleClick = () => {
-    done = true;
+    dispatch(setCheck(id));
+    console.log(name, id, done);
   };
 
   return (
     <div className="todoItem">
       <Checkbox
-        checked={done}
+        checked={true}
         color="primary"
         onChange={handleClick}
         inputProps={{ "aria-label": "secondary checkbox" }}
